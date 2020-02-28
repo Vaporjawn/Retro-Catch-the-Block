@@ -1,0 +1,19 @@
+.body{
+  color: skyblue;
+}
+html {
+  width: 512px;
+  margin: 10px auto 0px auto;
+  font-family: verdana, arial, sans-serif;
+}
+
+canvas {
+  border: 3px solid black;
+}
+.wide {
+  width: 512px;
+  text-align: center;
+}
+legend {
+  font-weight: bold;
+}
