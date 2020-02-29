@@ -1,7 +1,7 @@
 /*
 
 Created by:
-Zack Rauen
+Victor Williams
 
 */
 
@@ -22,8 +22,8 @@ var Player = function (gl) {
 	gl.bindBuffer( gl.ARRAY_BUFFER, this.buffer );
 	gl.bufferData( gl.ARRAY_BUFFER,	flatten(this.points), gl.STATIC_DRAW );
 	this.velocity = 0;
-	
-	
+
+
 	this.attachShaders();
 }
 
@@ -31,11 +31,11 @@ Player.prototype.attachShaders = function() {
 	var vertexShader = gl.createShader(gl.VERTEX_SHADER);
     gl.shaderSource(vertexShader, document.getElementById(playerVShaderID).text);
     gl.compileShader(vertexShader);
-	
+
 	var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
 	gl.shaderSource(fragShader, document.getElementById(playerFShaderID).text);
 	gl.compileShader(fragShader);
-	
+
 	this.shaderProgram = gl.createProgram();
 	this.gl.attachShader(this.shaderProgram, vertexShader);
     this.gl.attachShader(this.shaderProgram, fragShader);
@@ -46,7 +46,7 @@ Player.prototype.attachVariables = function() {
 	var myPosition = this.gl.getAttribLocation(this.shaderProgram, "myPosition");
 	this.gl.vertexAttribPointer( myPosition, 2, this.gl.FLOAT, false, 0, 0 );
 	this.gl.enableVertexAttribArray( myPosition );
-	
+
 	this.xshiftLoc = this.gl.getUniformLocation(this.shaderProgram,"xshift");
 	this.gl.uniform1f(this.xshiftLoc,this.shiftX);
 	this.yshiftLoc = this.gl.getUniformLocation(this.shaderProgram,"yshift");
@@ -56,12 +56,12 @@ Player.prototype.attachVariables = function() {
 	var change = 0.05;
 	if (forward) {
 		this.velocity += change;
-		if (this.velocity > 0.25) 
+		if (this.velocity > 0.25)
 			this.velocity = 0.25;
 	}
 	else {
 		this.velocity -= change;
-		if (this.velocity < -0.25) 
+		if (this.velocity < -0.25)
 			this.velocity = -0.25;
 	}
 	//this.velocity *= forward ? 1 : -1;
@@ -88,7 +88,7 @@ Player.prototype.moveX = function(forward, timestep) {
 		}
 	}
 }
-
+ 
 Player.prototype.moveY = function(forward) {
 //	var change = forward ? this.deltaTrans : -this.deltaTrans;
 //	if (this.points[this.leftTopMax][1] + change <= 1.01 && this.points[this.rightBottomMax][1] + change >= -1.01) {

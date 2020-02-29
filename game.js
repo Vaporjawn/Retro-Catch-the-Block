@@ -1,7 +1,7 @@
 /*
 
 Created by:
-Zack Rauen
+Victor Williams
 
 */
 var player;
@@ -21,15 +21,15 @@ function initializeGame() {
 	scoreDisplay = document.getElementById("score");
 	statusDisplay = document.getElementById("status");
 	playDisplay = document.getElementById("play");
-	
+
     var canvas=document.getElementById("gl-canvas");
     gl=WebGLUtils.setupWebGL(canvas);
     if (!gl) { alert( "WebGL is not available" ); }
-    
+
     gl.viewport(0, 0, 512, 512); // set size of viewport
     gl.clearColor(0.0, 0.0, 0.0, 1.0); // background black
     gl.clear(gl.COLOR_BUFFER_BIT); // allows color
-	
+
 	var timestep = lastFrame;
 	player = new Player(gl); // create new player
 	player.render(false, false, 0);
@@ -42,7 +42,7 @@ var keyArray = new Array(4);
 
 function keyDown(event) {
 	var keyCode = event.keyCode;
-	
+
 	if (keyCode == 32) { // SPACE
 		event.preventDefault();
 	}
@@ -120,7 +120,7 @@ function startTimer(duration, display) {
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
         display.textContent = minutes + ":" + seconds;
-		
+
 		SpawnBlocks(timer);
 
         if (--timer < 0) {
